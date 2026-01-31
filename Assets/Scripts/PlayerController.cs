@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb; // Reference to the Rigidbody2D component
 
     private PowerUp currentPowerUp; // The currently collected power-up
+    public Key currentKey; // The currently collected key
     private bool isUsingPowerUp = false; // Flag to prevent multiple activations
 
     private void Start()
@@ -83,6 +84,18 @@ public class PlayerController : MonoBehaviour
     {
         currentPowerUp = powerUp; // Store the collected power-up
         Debug.Log($"Collected Power-Up: {powerUp.powerUpType}");
+    }
+
+    public void CollectKey(Key key)
+    {
+        if (currentKey != null)
+        {
+            Debug.Log("Player already has a key. Cannot collect another.");
+            return; // Prevent collecting another key
+        }
+
+        currentKey = key; // Store the collected key
+        Debug.Log($"Collected Key: {key.key}");
     }
 
     private void UsePowerUp()
