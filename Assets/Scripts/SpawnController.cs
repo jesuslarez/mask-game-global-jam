@@ -60,6 +60,7 @@ public class SpawnController : MonoBehaviour
         if (type == SpawnType.Mask)
         {
             //TODO drop current mask
+            return;
            
         }
     }
