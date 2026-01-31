@@ -12,14 +12,17 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb; // Reference to the Rigidbody2D component
 
-    private PowerUp currentPowerUp; // The currently collected power-up
+    public bool hasKey; // The currently collected key
     private bool isUsingPowerUp = false; // Flag to prevent multiple activations
+    public PowerUpType? currentPowerUpType; // nullable
+    private SpawnController spawnController;
 
     private void Start()
     {
         // Get the SpriteRenderer and Rigidbody2D components
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        spawnController = FindAnyObjectByType<SpawnController>();
     }
 
     private void Update()
@@ -43,7 +46,7 @@ public class PlayerController : MonoBehaviour
         UpdateSpriteDirection();
 
         // Activate the power-up when "E" is pressed
-        if (Keyboard.current.eKey.wasPressedThisFrame && currentPowerUp != null && !isUsingPowerUp)
+        if (Keyboard.current.eKey.wasPressedThisFrame && currentPowerUpType != null && !isUsingPowerUp)
         {
             UsePowerUp();
         }
@@ -79,30 +82,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void CollectPowerUp(PowerUp powerUp)
+    public void CollectPowerUp(PowerUpType newType)
     {
-        currentPowerUp = powerUp; // Store the collected power-up
-        Debug.Log($"Collected Power-Up: {powerUp.powerUpType}");
+        if (currentPowerUpType != null)
+        {
+            spawnController.DropMaskAt(transform.position, currentPowerUpType.Value);
+        }
+
+        currentPowerUpType = newType;
+        Debug.Log(newType);
+    }
+
+
+    public void CollectKey()
+    {
+        if (hasKey)
+        {
+            Debug.Log("Player already has a key. Cannot collect another.");
+            return; // Prevent collecting another key
+        }
+
+        hasKey = true; 
+       
     }
 
     private void UsePowerUp()
     {
-        if (currentPowerUp == null) return;
+        if (currentPowerUpType == null) return;
 
-        Debug.Log($"Using Power-Up: {currentPowerUp.powerUpType}");
         isUsingPowerUp = true;
 
-        switch (currentPowerUp.powerUpType)
+        switch (currentPowerUpType.Value)
         {
-            case PowerUp.PowerUpType.SpeedBoost:
+            case PowerUpType.SpeedBoost:
                 StartCoroutine(SpeedBoost());
                 break;
-
-            // Add more power-up types here
         }
+        spawnController.onPowerUpUsed();
 
-        currentPowerUp = null; // Clear the power-up after use
+        currentPowerUpType = null;
     }
+
 
     private System.Collections.IEnumerator SpeedBoost()
     {
