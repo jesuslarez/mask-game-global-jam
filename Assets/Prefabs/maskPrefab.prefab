@@ -194,5 +194,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
   powerUpType: 0
-  speedBoostSprite: {fileID: -939279735202418843, guid: af6fcd768a46e244cb6611112cd9bb68, type: 3}
-  invulnerabilitySprite: {fileID: -6969066008438377734, guid: 9822d08f4de6e4e4b9b8d9652c18443a, type: 3}
+  database: {fileID: 11400000, guid: 9c430e7d374dd3d439f883763e36d47b, type: 2}

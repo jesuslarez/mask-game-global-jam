@@ -103,7 +103,7 @@ public class SpawnController : MonoBehaviour
     public void DropMaskAt(Vector3 worldPos, PowerUpType type)
     {
         if (maskPrefab == null) return;
-        worldPos += new Vector3(0.5f,0,0);
+        worldPos += new Vector3(maskXDistance, 0,0);
         GameObject go = Instantiate(maskPrefab, worldPos, Quaternion.identity);
 
         ItemSpawn item = go.GetComponent<ItemSpawn>();

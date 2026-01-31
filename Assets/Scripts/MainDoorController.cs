@@ -29,6 +29,7 @@ public class MainDoorController : MonoBehaviour
             player.hasKey = false;
 
         }
+        player.UseKey();
 
 
     

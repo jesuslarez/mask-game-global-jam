@@ -18,12 +18,19 @@ public class PlayerController : MonoBehaviour
     public PowerUpType? currentPowerUpType; // nullable
     private SpawnController spawnController;
 
+    private UI_MaskEquipped uiMask;
+    private UI_Key uiKey;
+
+
     private void Start()
     {
         // Get the SpriteRenderer and Rigidbody2D components
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        spawnController = FindAnyObjectByType<SpawnController>();
+        spawnController = FindAnyObjectByType<SpawnController>(); 
+        uiMask = FindAnyObjectByType<UI_MaskEquipped>();
+        uiKey = FindAnyObjectByType<UI_Key>();
+
     }
 
     private void Update()
@@ -102,9 +109,16 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player already has a key. Cannot collect another.");
             return; // Prevent collecting another key
         }
-
+        uiKey.KeyGained();
         hasKey = true; 
        
+    }
+
+
+    public void UseKey()
+    {
+        uiKey.KeyUsed();
+
     }
 
     private void UsePowerUp()
@@ -126,6 +140,7 @@ public class PlayerController : MonoBehaviour
             // Add more power-up types here
         }
         spawnController.onPowerUpUsed();
+        uiMask?.PlayUseShake();
 
         currentPowerUpType = null;
     }
