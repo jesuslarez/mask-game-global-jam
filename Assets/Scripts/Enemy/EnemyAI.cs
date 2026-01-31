@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
         StartPatrol();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         LookForPlayer();
 

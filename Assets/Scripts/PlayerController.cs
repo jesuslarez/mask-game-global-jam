@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private PowerUp currentPowerUp; // The currently collected power-up
     private bool isUsingPowerUp = false; // Flag to prevent multiple activations
+    private bool isInvulnerable = false; // Flag for invulnerability
 
     private void Start()
     {
@@ -98,6 +99,10 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(SpeedBoost());
                 break;
 
+            case PowerUp.PowerUpType.Invulnerability:
+                StartCoroutine(Invulnerability());
+                break;
+
             // Add more power-up types here
         }
 
@@ -113,8 +118,33 @@ public class PlayerController : MonoBehaviour
         isUsingPowerUp = false;
     }
 
+    private System.Collections.IEnumerator Invulnerability()
+    {
+        isInvulnerable = true; // Activate invulnerability
+        yield return new WaitForSeconds(5f); // Duration of invulnerability
+        isInvulnerable = false; // Deactivate invulnerability
+        isUsingPowerUp = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
+        if (collision.CompareTag("Enemy"))
+        {
+            if (isInvulnerable)
+            {
+                Debug.Log("Player is invulnerable. No damage taken.");
+                return;
+            }
+
+            Debug.Log("Player collided with an enemy. Game Over!");
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Handle player death (e.g., end the game)
+        Debug.Log("Player has died. Ending the game...");
+        Time.timeScale = 0; // Pause the game
     }
 }
