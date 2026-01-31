@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private FieldOfView fieldOfView;
+
     public float moveSpeed = 5f; // Speed of the player movement
     public Sprite spriteUp;     // Sprite for looking up
     public Sprite spriteDown;   // Sprite for looking down
@@ -17,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private bool isInvulnerable = false; // Flag for invulnerability
     public PowerUpType? currentPowerUpType; // nullable
     private SpawnController spawnController;
+
+    [Header("Field Of View")]
+    [SerializeField] private float fov;
+    [SerializeField] private float distanceOfView;
 
     private void Start()
     {
@@ -51,6 +57,13 @@ public class PlayerController : MonoBehaviour
         {
             UsePowerUp();
         }
+
+        Vector3 targetPosition = GetMouseWorldPosition();
+        Vector3 aimDir = (targetPosition - transform.position).normalized;
+        fieldOfView.SetAimDirection(aimDir);
+        fieldOfView.SetOrigin(transform.position);
+        fieldOfView.SetFoV(fov);
+        fieldOfView.SetViewDistance(distanceOfView);
     }
 
     private void FixedUpdate()
@@ -190,5 +203,36 @@ public class PlayerController : MonoBehaviour
         // Handle player death (e.g., end the game)
         Debug.Log("Player has died. Ending the game...");
         Time.timeScale = 0; // Pause the game
+    }
+}
+    public static Vector3 GetMouseWorldPositionWithZ(Vector3 screenPosition, Camera worldCamera)
+    {
+        if (worldCamera == null) worldCamera = Camera.main;
+        return worldCamera.ScreenToWorldPoint(screenPosition);
+    }
+
+    // Obtiene la posici�n del mouse en el mundo con z = 0
+    public static Vector3 GetMouseWorldPosition()
+    {
+        // Usando el nuevo Input System
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+        Vector3 screenPosition = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 0f);
+
+        // Para 2D, necesitamos la distancia desde la c�mara al plano del juego
+        Camera cam = Camera.main;
+        if (cam.orthographic)
+        {
+            // Para ortogr�fica, la distancia z no afecta
+            screenPosition.z = 0f;
+        }
+        else
+        {
+            // Para perspectiva, ponemos la distancia desde la c�mara al objeto
+            screenPosition.z = cam.nearClipPlane + 0.1f;
+        }
+
+        Vector3 worldPosition = GetMouseWorldPositionWithZ(screenPosition, cam);
+        worldPosition.z = 0f; // plano 2D
+        return worldPosition;
     }
 }
