@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player has died. Ending the game...");
         Time.timeScale = 0; // Pause the game
     }
-}
+
     public static Vector3 GetMouseWorldPositionWithZ(Vector3 screenPosition, Camera worldCamera)
     {
         if (worldCamera == null) worldCamera = Camera.main;
