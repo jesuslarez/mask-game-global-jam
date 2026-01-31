@@ -96,12 +96,6 @@ public class EnemyAI : MonoBehaviour
     {
         if (IsChasing())
         {
-           
-            if (agent.remainingDistance < 0.8f)
-            {
-                player.OnEnemyCollision();
-                return; 
-            }
          
             nextPosition = player.transform.position;
             currentLookingTimeout -= Time.deltaTime;
