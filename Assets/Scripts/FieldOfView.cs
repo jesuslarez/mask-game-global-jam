@@ -1,4 +1,3 @@
-using CodeMonkey.Utils;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour

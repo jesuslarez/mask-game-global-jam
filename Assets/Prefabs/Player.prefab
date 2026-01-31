@@ -53,6 +53,7 @@ MonoBehaviour:
   spriteUp: {fileID: 7482667652216324306, guid: 5fc343495f6989f40a04e8afb91c236a, type: 3}
   spriteDown: {fileID: 7933510204706534403, guid: 7b89f93e504851e449fb901126c985bc, type: 3}
   spriteSide: {fileID: -6160522085252066548, guid: cee9cee8cc2cf954cb24b7048ee5ae7f, type: 3}
+  hasKey: 0
   fov: 85
   distanceOfView: 8
 --- !u!212 &5195638029589738331
@@ -104,12 +105,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 978942612559604503, guid: 1cc630547890d0e4691320dbfc5eef03, type: 3}
+  m_Sprite: {fileID: 1870916034, guid: 1cc630547890d0e4691320dbfc5eef03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8125, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
