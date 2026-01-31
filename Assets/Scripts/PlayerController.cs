@@ -150,20 +150,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            if (isInvulnerable)
-            {
-                Debug.Log("Player is invulnerable. No damage taken.");
-                return;
-            }
-
-            Debug.Log("Player collided with an enemy. Game Over!");
-            Die();
-        }
+        // Handle collision with enemies
     }
 
-    private void Die()
+    public void Die()
     {
         // Handle player death (e.g., end the game)
         Debug.Log("Player has died. Ending the game...");

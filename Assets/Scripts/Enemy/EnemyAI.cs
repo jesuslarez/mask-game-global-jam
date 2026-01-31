@@ -19,11 +19,11 @@ public class EnemyAI : MonoBehaviour
 
     private int currentPoint;
     private Vector3 nextPosition;
-    private GameObject player;
+    private PlayerController player;
 
     void Start()
     {
-        player = FindFirstObjectByType<PlayerController>().gameObject;
+        player = FindFirstObjectByType<PlayerController>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -96,8 +96,17 @@ public class EnemyAI : MonoBehaviour
     {
         if (IsChasing())
         {
+           
+            if (agent.remainingDistance < 0.8f)
+            {
+                Debug.Log("agent.remainingDistance = " + agent.remainingDistance);
+                player.Die();
+                return; 
+            }
+         
             nextPosition = player.transform.position;
             currentLookingTimeout -= Time.deltaTime;
+
         }
 
         if (IsPatrolling())
