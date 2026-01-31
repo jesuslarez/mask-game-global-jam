@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(SpeedBoost());
                 break;
 
-            case PowerUp.PowerUpType.Invulnerability:
+            case PowerUpType.Invulnerability:
                 StartCoroutine(Invulnerability());
                 break;
 

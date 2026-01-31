@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public enum PowerUpType
-    {
-        SpeedBoost,      // Increases player speed
-        Invulnerability  // Grants temporary invulnerability
-    }
 
     public PowerUpType powerUpType; // Type of the power-up
     public Sprite speedBoostSprite; // Sprite for SpeedBoost
@@ -51,6 +46,6 @@ public class PowerUp : MonoBehaviour
 }
 public enum PowerUpType
 {
-    SpeedBoost, // Increases player speed
-                // Add more power-up types here
+    SpeedBoost,      // Increases player speed
+    Invulnerability  // Grants temporary invulnerability
 }
