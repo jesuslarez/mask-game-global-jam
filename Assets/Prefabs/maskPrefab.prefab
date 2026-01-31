@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cf5fdb093772549b4dd30cee90ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawn
+  powerUp: {fileID: 0}
 --- !u!50 &1634109911656989643
 Rigidbody2D:
   serializedVersion: 5
@@ -193,3 +194,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
   powerUpType: 0
+  speedBoostSprite: {fileID: -939279735202418843, guid: af6fcd768a46e244cb6611112cd9bb68, type: 3}
+  invulnerabilitySprite: {fileID: -6969066008438377734, guid: 9822d08f4de6e4e4b9b8d9652c18443a, type: 3}

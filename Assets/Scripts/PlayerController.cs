@@ -153,6 +153,16 @@ public class PlayerController : MonoBehaviour
         // Handle collision with enemies
     }
 
+    public void OnEnemyCollision()
+    {
+        if (isInvulnerable)
+        {
+            Debug.Log("Player is invulnerable and ignored the enemy collision.");
+            return; // Ignore damage if invulnerable
+        }
+        Die();
+    }
+
     public void Die()
     {
         // Handle player death (e.g., end the game)

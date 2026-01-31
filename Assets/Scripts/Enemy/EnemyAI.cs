@@ -99,8 +99,7 @@ public class EnemyAI : MonoBehaviour
            
             if (agent.remainingDistance < 0.8f)
             {
-                Debug.Log("agent.remainingDistance = " + agent.remainingDistance);
-                player.Die();
+                player.OnEnemyCollision();
                 return; 
             }
          
