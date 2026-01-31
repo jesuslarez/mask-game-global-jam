@@ -9,13 +9,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Mask
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Object
+  - BehindMask
+  - Black
   - 
   - 
   - 
@@ -41,6 +41,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 2082742579
+    locked: 0
+  - name: Enemies
+    uniqueID: 1774660211
+    locked: 0
+  - name: Player
+    uniqueID: 2431553641
+    locked: 0
+  - name: BehindMask
+    uniqueID: 2631604593
     locked: 0
   m_RenderingLayers:
   - Default
