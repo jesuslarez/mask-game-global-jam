@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // El prefab del enemigo a generar
-    public GameObject[] spawnPoints; // Array de GameObjects que representan los puntos de spawn
-    public int numberOfEnemies = 3; // Número total de enemigos a generar
+    public GameObject enemyPrefab; // The enemy prefab to spawn
+    public GameObject spawnPointsParent; // The parent GameObject containing spawn points as children
+    public int numberOfEnemies = 3; // Total number of enemies to spawn
 
     private void Start()
     {
@@ -16,32 +16,47 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyPrefab == null)
         {
-            Debug.LogError("¡El prefab del enemigo no está asignado!");
-            return;
+            Debug.LogError("Enemy prefab is not assigned!");
+            return; 
         }
 
-        if (spawnPoints.Length == 0)
+        if (spawnPointsParent == null)
         {
-            Debug.LogError("¡No hay puntos de spawn asignados!");
+            Debug.LogError("Spawn points parent is not assigned!");
+            return;
+        }
+        // Get all child GameObjects of the spawnPointsParent
+        Transform[] spawnPoints = spawnPointsParent.GetComponentsInChildren<Transform>();
+
+        // Convert the array of Transforms to a list of GameObjects, excluding the parent itself
+        List<GameObject> availableSpawnPoints = new List<GameObject>();
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            if (spawnPoint != spawnPointsParent.transform) // Exclude the parent itself
+            {
+                availableSpawnPoints.Add(spawnPoint.gameObject);
+            }
+        }
+
+        if (availableSpawnPoints.Count == 0)
+        {
+            Debug.LogError("No spawn points found under the parent GameObject!");
             return;
         }
 
-        // Convertir el array de spawnPoints a una lista para manipularlo fácilmente
-        List<GameObject> availableSpawnPoints = new List<GameObject>(spawnPoints);
-
-        // Asegurarse de no generar más enemigos que puntos de spawn disponibles
+        // Ensure we don't spawn more enemies than available spawn points
         int enemiesToSpawn = Mathf.Min(numberOfEnemies, availableSpawnPoints.Count);
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            // Seleccionar un punto de spawn aleatorio
+            // Select a random spawn point
             int randomIndex = Random.Range(0, availableSpawnPoints.Count);
             GameObject spawnPoint = availableSpawnPoints[randomIndex];
 
-            // Generar el enemigo en el punto de spawn seleccionado
+            // Spawn the enemy at the selected spawn point
             Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
 
-            // Eliminar el punto de spawn de la lista para que no se use de nuevo
+            // Remove the spawn point from the list to prevent reuse
             availableSpawnPoints.RemoveAt(randomIndex);
         }
     }

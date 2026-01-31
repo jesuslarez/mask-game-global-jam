@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private FieldOfView fieldOfView;
+
     public float moveSpeed = 5f; // Speed of the player movement
     public Sprite spriteUp;     // Sprite for looking up
     public Sprite spriteDown;   // Sprite for looking down
@@ -18,8 +20,14 @@ public class PlayerController : MonoBehaviour
     public PowerUpType? currentPowerUpType; // nullable
     private SpawnController spawnController;
 
+
     private UI_MaskEquipped uiMask;
     private UI_Key uiKey;
+
+
+    [Header("Field Of View")]
+    [SerializeField] private float fov;
+    [SerializeField] private float distanceOfView;
 
 
     private void Start()
@@ -58,6 +66,13 @@ public class PlayerController : MonoBehaviour
         {
             UsePowerUp();
         }
+
+        Vector3 targetPosition = GetMouseWorldPosition();
+        Vector3 aimDir = (targetPosition - transform.position).normalized;
+        fieldOfView.SetAimDirection(aimDir);
+        fieldOfView.SetOrigin(transform.position);
+        fieldOfView.SetFoV(fov);
+        fieldOfView.SetViewDistance(distanceOfView);
     }
 
     private void FixedUpdate()
@@ -137,14 +152,39 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Invulnerability());
                 break;
 
+            case PowerUpType.Stun:
+                StunEnemies();
+                break;
+
             // Add more power-up types here
         }
+
         spawnController.onPowerUpUsed();
         uiMask?.PlayUseShake();
+
 
         currentPowerUpType = null;
     }
 
+    private void StunEnemies()
+    {
+        Debug.Log("Stun Power-Up activated!");
+
+        // Find all enemies in the scene
+        EnemyAI[] enemies = FindObjectsByType<EnemyAI>(FindObjectsSortMode.None);
+
+        foreach (EnemyAI enemy in enemies)
+        {
+            // Check if the enemy is within a certain range of the player
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy <= 5f) // Example range of 5 units
+            {
+                enemy.Stun(5f); // Stun the enemy for 5 seconds
+            }
+        }
+
+        isUsingPowerUp = false; // Reset the power-up usage flag
+    }
 
     private System.Collections.IEnumerator SpeedBoost()
     {
@@ -165,17 +205,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Handle collision with enemies
-    }
-
-    public void OnEnemyCollision()
-    {
-        if (isInvulnerable)
-        {
-            Debug.Log("Player is invulnerable and ignored the enemy collision.");
-            return; // Ignore damage if invulnerable
+        if (collision.CompareTag("Enemy")) {
+            if (isInvulnerable)
+            {
+                Debug.Log("Player is invulnerable and ignored the enemy collision.");
+                return; // Ignore damage if invulnerable
+            }else {
+                Die();
+            }
         }
-        Die();
+
     }
 
     public void Die()
@@ -183,5 +222,36 @@ public class PlayerController : MonoBehaviour
         // Handle player death (e.g., end the game)
         Debug.Log("Player has died. Ending the game...");
         Time.timeScale = 0; // Pause the game
+    }
+
+    public static Vector3 GetMouseWorldPositionWithZ(Vector3 screenPosition, Camera worldCamera)
+    {
+        if (worldCamera == null) worldCamera = Camera.main;
+        return worldCamera.ScreenToWorldPoint(screenPosition);
+    }
+
+    // Obtiene la posici�n del mouse en el mundo con z = 0
+    public static Vector3 GetMouseWorldPosition()
+    {
+        // Usando el nuevo Input System
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+        Vector3 screenPosition = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 0f);
+
+        // Para 2D, necesitamos la distancia desde la c�mara al plano del juego
+        Camera cam = Camera.main;
+        if (cam.orthographic)
+        {
+            // Para ortogr�fica, la distancia z no afecta
+            screenPosition.z = 0f;
+        }
+        else
+        {
+            // Para perspectiva, ponemos la distancia desde la c�mara al objeto
+            screenPosition.z = cam.nearClipPlane + 0.1f;
+        }
+
+        Vector3 worldPosition = GetMouseWorldPositionWithZ(screenPosition, cam);
+        worldPosition.z = 0f; // plano 2D
+        return worldPosition;
     }
 }

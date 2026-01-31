@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefab: {fileID: 3429145543445527444, guid: 245e58de079d35f469794e89b1408791, type: 3}
-  spawnPoints:
-  - {fileID: 2024722724684191089, guid: eba4849250e3f454486aeccb153a106e, type: 3}
+  spawnPointsParent: {fileID: 2024722724684191089, guid: eba4849250e3f454486aeccb153a106e, type: 3}
   numberOfEnemies: 3

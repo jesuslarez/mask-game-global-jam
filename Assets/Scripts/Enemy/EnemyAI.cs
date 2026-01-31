@@ -21,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     private Vector3 nextPosition;
     private PlayerController player;
 
+    private bool isStunned = false; // Flag to check if the enemy is stunned
+
     void Start()
     {
         player = FindFirstObjectByType<PlayerController>();
@@ -96,16 +98,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (IsChasing())
         {
-           
-            if (agent.remainingDistance < 0.8f)
-            {
-                player.OnEnemyCollision();
-                return; 
-            }
-         
             nextPosition = player.transform.position;
             currentLookingTimeout -= Time.deltaTime;
-
         }
 
         if (IsPatrolling())
@@ -130,4 +124,29 @@ public class EnemyAI : MonoBehaviour
 
     private bool IsPatrolling() => currentMode.Equals(Mode.Patrol);
     private bool IsChasing() => currentMode.Equals(Mode.Chase);
+
+    public void Stun(float duration)
+    {
+        if (isStunned) return; // Prevent multiple stuns
+
+        isStunned = true;
+        Debug.Log($"{gameObject.name} is stunned!");
+
+        // Stop the NavMeshAgent from moving
+        agent.isStopped = true;
+
+        // Start a coroutine to unstun the enemy after the duration
+        StartCoroutine(UnstunAfterDelay(duration));
+    }
+
+    private IEnumerator UnstunAfterDelay(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        isStunned = false;
+        Debug.Log($"{gameObject.name} is no longer stunned!");
+
+        // Resume the NavMeshAgent's movement
+        agent.isStopped = false;
+    }
 }

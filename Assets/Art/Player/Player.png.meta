@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d397d63b65437774584eb4cdfcaa573c
+guid: 1cc630547890d0e4691320dbfc5eef03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4250926123117471553
-    second: EnemyIdle_0
+      213: 978942612559604503
+    second: PlayerIdle_0
   - first:
-      213: -8626430948324366259
-    second: EnemyIdle_1
+      213: 3499389992042037492
+    second: PlayerIdle_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyIdle_0
+      name: Player_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,16 +129,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 14768de59c25efa30800000000000000
-      internalID: 4250926123117471553
+      spriteID: cdb54fac101fb2642b24cf8dd7b5010c
+      internalID: 1870916034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyIdle_1
+      name: Player_1
       rect:
         serializedVersion: 2
         x: 16
@@ -151,16 +151,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d48a0bdd1c2c84880800000000000000
-      internalID: -8626430948324366259
+      spriteID: db76b09c48fdb6b4d9b4cd53fa5bf704
+      internalID: -1827840197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyIdle_2
+      name: Player_2
       rect:
         serializedVersion: 2
         x: 35
@@ -175,14 +175,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb4e3c4fd572c5048b78607487872d00
-      internalID: 2105228258
+      spriteID: 7e085b16525fb5a44a8cd0d653046446
+      internalID: 1916304783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyIdle_3
+      name: Player_3
       rect:
         serializedVersion: 2
         x: 49
@@ -197,8 +197,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5499baf32f31504da9894aa58bd94bb
-      internalID: 92637942
+      spriteID: 356b2909ed1647940a87ccf7434a6d81
+      internalID: 2088008261
       vertices: []
       indices: 
       edges: []
@@ -207,7 +207,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1e82f0de6d6940941ac946dbeef7520a
+    spriteID: f00e07ac827bda0418f1a6667b0cddea
     internalID: 0
     vertices: []
     indices: 
@@ -219,10 +219,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      EnemyIdle_0: 4250926123117471553
-      EnemyIdle_1: -8626430948324366259
-      EnemyIdle_2: 2105228258
-      EnemyIdle_3: 92637942
+      Player_0: 1870916034
+      Player_1: -1827840197
+      Player_2: 1916304783
+      Player_3: 2088008261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

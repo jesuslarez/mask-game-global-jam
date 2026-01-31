@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
-  m_Name: UniversalRP
+  m_Name: LightweightRenderPipelineAsset
   m_EditorClassIdentifier: 
   k_AssetVersion: 13
   k_AssetPreviousVersion: 13
-  m_RendererType: 1
-  m_RendererData: {fileID: 0}
+  m_RendererType: 0
+  m_RendererData: {fileID: 11400000, guid: e647e05097db33c4c956fd01a32cdfc5, type: 2}
   m_RendererDataList:
-  - {fileID: 11400000, guid: cd8d47f04d5a23347bb4e3460ee977a3, type: 2}
+  - {fileID: 11400000, guid: e647e05097db33c4c956fd01a32cdfc5, type: 2}
   m_DefaultRendererIndex: 0
   m_RequireDepthTexture: 0
   m_RequireOpaqueTexture: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   m_SupportsTerrainHoles: 1
   m_SupportsHDR: 1
   m_HDRColorBufferPrecision: 0
-  m_MSAA: 1
+  m_MSAA: 2
   m_RenderScale: 1
   m_UpscalingFilter: 0
   m_FsrOverrideSharpness: 0
@@ -47,10 +47,10 @@ MonoBehaviour:
   m_AdditionalLightsRenderingMode: 1
   m_AdditionalLightsPerObjectLimit: 4
   m_AdditionalLightShadowsSupported: 0
-  m_AdditionalLightsShadowmapResolution: 2048
-  m_AdditionalLightsShadowResolutionTierLow: 512
-  m_AdditionalLightsShadowResolutionTierMedium: 1024
-  m_AdditionalLightsShadowResolutionTierHigh: 2048
+  m_AdditionalLightsShadowmapResolution: 512
+  m_AdditionalLightsShadowResolutionTierLow: 128
+  m_AdditionalLightsShadowResolutionTierMedium: 256
+  m_AdditionalLightsShadowResolutionTierHigh: 512
   m_ReflectionProbeBlending: 0
   m_ReflectionProbeBoxProjection: 0
   m_ReflectionProbeAtlas: 1
