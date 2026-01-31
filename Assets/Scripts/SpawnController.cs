@@ -14,10 +14,13 @@ public class SpawnController : MonoBehaviour
     [Min(0)] [SerializeField] private int keyStartCount = 3;   
 
     
-    [Min(0f)] [SerializeField] private float maskRespawnDelay = 5f;
+    [Min(0f)] [SerializeField] private float maskRespawnDelay = 10f;
+    [Min(0f)] [SerializeField] private float maskXDistance = 0.5f;
+
 
     private List<SpawnPoint> maskPoints = new();
     private List<SpawnPoint> keyPoints = new();
+    public PlayerController player;
 
     private int masksActive;
     private bool started;
@@ -39,7 +42,13 @@ public class SpawnController : MonoBehaviour
         FillMasksToTarget();
     }
 
-    public void OnItemPicked(SpawnType type)
+    public void onPowerUpUsed() {
+
+        masksActive = Mathf.Max(0, masksActive - 1);
+        StartCoroutine(RespawnMaskAfterDelay());
+    }
+
+    public void OnItemPicked(SpawnType type, ItemSpawn item)
     {
         if (!started) return;
 
@@ -50,8 +59,8 @@ public class SpawnController : MonoBehaviour
 
         if (type == SpawnType.Mask)
         {
-            masksActive = Mathf.Max(0, masksActive - 1);
-            StartCoroutine(RespawnMaskAfterDelay());
+            //TODO drop current mask
+           
         }
     }
 
@@ -90,7 +99,34 @@ public class SpawnController : MonoBehaviour
         chosen.Spawn(prefab, this);
         return true;
     }
+    public void DropMaskAt(Vector3 worldPos, PowerUpType type)
+    {
+        if (maskPrefab == null) return;
+        worldPos += new Vector3(0.5f,0,0);
+        GameObject go = Instantiate(maskPrefab, worldPos, Quaternion.identity);
+
+        ItemSpawn item = go.GetComponent<ItemSpawn>();
+        PowerUp pu = go.GetComponent<PowerUp>();
+
+        if (item != null)
+        {
+            item.Init(this, null, SpawnType.Mask);
+        }
+
+        if (pu != null)
+        {
+            pu.SetType(type);
+        }
+
+        if (item != null)
+        {
+            item.DisablePickupFor(0.25f);
+        }
+    }
+
 }
+
+
 
 public enum SpawnType
 {
