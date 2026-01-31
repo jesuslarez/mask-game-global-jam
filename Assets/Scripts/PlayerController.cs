@@ -10,11 +10,16 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb; // Reference to the Rigidbody2D component
+
+    private PowerUp currentPowerUp; // The currently collected power-up
+    private bool isUsingPowerUp = false; // Flag to prevent multiple activations
 
     private void Start()
     {
-        // Get the SpriteRenderer component
+        // Get the SpriteRenderer and Rigidbody2D components
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -34,11 +39,20 @@ public class PlayerController : MonoBehaviour
             moveDirection.Normalize();
         }
 
-        // Move the player smoothly
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-
         // Update the sprite based on movement direction
         UpdateSpriteDirection();
+
+        // Activate the power-up when "E" is pressed
+        if (Keyboard.current.eKey.wasPressedThisFrame && currentPowerUp != null && !isUsingPowerUp)
+        {
+            UsePowerUp();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        // Move the player using Rigidbody2D
+        rb.linearVelocity = moveDirection * moveSpeed;
     }
 
     private void UpdateSpriteDirection()
@@ -63,5 +77,44 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.sprite = spriteDown;
             spriteRenderer.flipX = false; // No flip needed
         }
+    }
+
+    public void CollectPowerUp(PowerUp powerUp)
+    {
+        currentPowerUp = powerUp; // Store the collected power-up
+        Debug.Log($"Collected Power-Up: {powerUp.powerUpType}");
+    }
+
+    private void UsePowerUp()
+    {
+        if (currentPowerUp == null) return;
+
+        Debug.Log($"Using Power-Up: {currentPowerUp.powerUpType}");
+        isUsingPowerUp = true;
+
+        switch (currentPowerUp.powerUpType)
+        {
+            case PowerUp.PowerUpType.SpeedBoost:
+                StartCoroutine(SpeedBoost());
+                break;
+
+            // Add more power-up types here
+        }
+
+        currentPowerUp = null; // Clear the power-up after use
+    }
+
+    private System.Collections.IEnumerator SpeedBoost()
+    {
+        float originalSpeed = moveSpeed;
+        moveSpeed *= 3; // SUPER speed (times 3)
+        yield return new WaitForSeconds(5f); // Duration of the speed boost
+        moveSpeed = originalSpeed; // Reset to original speed
+        isUsingPowerUp = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name);
     }
 }
