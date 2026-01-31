@@ -123,13 +123,36 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Invulnerability());
                 break;
 
+            case PowerUpType.Stun:
+                StunEnemies();
+                break;
+
             // Add more power-up types here
         }
-        spawnController.onPowerUpUsed();
 
+        spawnController.onPowerUpUsed();
         currentPowerUpType = null;
     }
 
+    private void StunEnemies()
+    {
+        Debug.Log("Stun Power-Up activated!");
+
+        // Find all enemies in the scene
+        EnemyAI[] enemies = FindObjectsByType<EnemyAI>(FindObjectsSortMode.None);
+
+        foreach (EnemyAI enemy in enemies)
+        {
+            // Check if the enemy is within a certain range of the player
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy <= 5f) // Example range of 5 units
+            {
+                enemy.Stun(5f); // Stun the enemy for 5 seconds
+            }
+        }
+
+        isUsingPowerUp = false; // Reset the power-up usage flag
+    }
 
     private System.Collections.IEnumerator SpeedBoost()
     {
@@ -155,8 +178,9 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Player is invulnerable and ignored the enemy collision.");
                 return; // Ignore damage if invulnerable
+            }else {
+                Die();
             }
-            Die();
         }
 
     }
