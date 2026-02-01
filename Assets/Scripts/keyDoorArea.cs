@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class keyDoorArea : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class keyDoorArea : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
+        SceneManager.LoadScene("WinScene");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,6 +68,15 @@ public class keyDoorArea : MonoBehaviour
         if (keyOnDoor == 3)
         {
             StartCoroutine(openDoor());
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isFullyOpen)
+        {
+            Win();
+            return;
         }
     }
 }
