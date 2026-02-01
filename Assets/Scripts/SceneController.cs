@@ -37,6 +37,7 @@ public class SceneController : MonoBehaviour
 
     public void GoToMenu()
     {
+        GeneralAudioManager.Instance.StopClip();
         SceneManager.LoadScene("MenuScene");
     }
 }

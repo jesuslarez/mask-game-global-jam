@@ -237,10 +237,11 @@ public class PlayerController : MonoBehaviour
         PlaySound(GameOverSound);
         Debug.Log("Player has died. Ending the game...");
         Time.timeScale = 0; // Pause the game
-        SceneManager.LoadScene("GameOverScene");
+        GeneralAudioManager.Instance.StopClip();
+        SceneManager.LoadScene("GameOverScene", LoadSceneMode.Additive);
     }
 
-    private void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
         if (clip != null && audioSource != null)
         {
