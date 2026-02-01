@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("StartLetter");
         Time.timeScale = 1;
     }
 

@@ -668,10 +668,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 999776015100626359, guid: 2da0b9b2885ee034480dfbf3d8cd444e, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 999776015100626359, guid: 2da0b9b2885ee034480dfbf3d8cd444e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1186039231781902570, guid: 2da0b9b2885ee034480dfbf3d8cd444e, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1994998401}
+    - target: {fileID: 6165020539091609745, guid: 2da0b9b2885ee034480dfbf3d8cd444e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 828
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165020539091609745, guid: 2da0b9b2885ee034480dfbf3d8cd444e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 464.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6977423150610734500, guid: 2da0b9b2885ee034480dfbf3d8cd444e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
