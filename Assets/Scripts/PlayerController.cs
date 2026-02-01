@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene("GameOverScene");
     }
 
-    private void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
         if (clip != null && audioSource != null)
         {

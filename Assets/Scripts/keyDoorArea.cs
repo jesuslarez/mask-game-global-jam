@@ -11,10 +11,12 @@ public class keyDoorArea : MonoBehaviour
     public SpriteRenderer sr;
     private bool isOpen;
     private bool isFullyOpen;
+    private PlayerController playerController;
+    public AudioClip doorOpening;
 
     void Start()
     {
-        
+        playerController = FindAnyObjectByType<PlayerController>();
         sr.sprite = doorSpritesArray[0];
         isOpen = false;
         isFullyOpen = false;
@@ -22,6 +24,7 @@ public class keyDoorArea : MonoBehaviour
 
     public IEnumerator openDoor()
     {
+        playerController.PlaySound(doorOpening);
         uiKey.Opening();
         if (isOpen || isFullyOpen) yield break;
 
