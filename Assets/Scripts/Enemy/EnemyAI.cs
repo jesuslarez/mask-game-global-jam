@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -30,7 +27,7 @@ public class EnemyAI : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         patrolPoints = patrolPointsParent.GetComponentsInChildren<PatrolPoint>();
-
+        currentPoint = Random.Range(0, patrolPoints.Length - 1);
         StartPatrol();
     }
 
