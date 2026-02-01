@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
     public void UseKey()
     {
+        PlaySound(keyUseSound);
         uiKey.KeyUsed();
 
     }
