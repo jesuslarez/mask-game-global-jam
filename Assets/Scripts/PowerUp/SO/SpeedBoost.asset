@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeedBoost
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpSO
   type: 0
-  sprite: {fileID: 4250926123117471553, guid: d397d63b65437774584eb4cdfcaa573c, type: 3}
+  sprite: {fileID: -9083362998159298969, guid: 57737951da00c454d963d38e62d85cef, type: 3}
   powerName: Speed Boost
   duration: 5
   speedMultiplier: 3

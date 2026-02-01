@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stun
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpSO
   type: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 4546904782121573997, guid: 423ff4cedd3222d49b3f4c9b26954bb8, type: 3}
   powerName: Stun
   duration: 5
   speedMultiplier: 0
