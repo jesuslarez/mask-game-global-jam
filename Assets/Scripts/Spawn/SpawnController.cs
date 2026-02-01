@@ -121,7 +121,7 @@ public class SpawnController : MonoBehaviour
 
         if (item != null)
         {
-            item.DisablePickupFor(0.25f);
+            item.DisablePickupFor(0.3f);
         }
     }
 

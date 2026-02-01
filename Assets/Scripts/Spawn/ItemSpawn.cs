@@ -20,30 +20,15 @@ public class ItemSpawn : MonoBehaviour
         {
             powerUp = GetComponent<PowerUp>();
 
-            // Get all existing masks in the scene
-            PowerUp[] existingMasks = FindObjectsByType<PowerUp>(FindObjectsSortMode.None);
-
-            // Get the types of all existing masks
-            var existingTypes = new HashSet<PowerUpType>(existingMasks.Select(mask => mask.powerUpType));
-
-            // Get all possible PowerUpTypes
+           
             PowerUpType[] allTypes = (PowerUpType[])System.Enum.GetValues(typeof(PowerUpType));
 
-            // Find unused types
-            var unusedTypes = allTypes.Except(existingTypes).ToList();
+            
+          
 
             PowerUpType typeToAssign;
 
-            if (unusedTypes.Count > 0)
-            {
-                // If there are unused types, pick one at random
-                typeToAssign = unusedTypes[Random.Range(0, unusedTypes.Count)];
-            }
-            else
-            {
-                // If all types are used, pick any type at random
-                typeToAssign = allTypes[Random.Range(0, allTypes.Length)];
-            }
+            typeToAssign = allTypes[Random.Range(0, allTypes.Length)];
 
             // Assign the selected type to the power-up
             powerUp.SetType(typeToAssign);
