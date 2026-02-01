@@ -149,6 +149,11 @@ MonoBehaviour:
   hasKey: 0
   fov: 75
   distanceOfView: 8
+  keyPickupSound: {fileID: 8300000, guid: 95edfc2b113eccb4b8c1ec94a8fe44c3, type: 3}
+  keyUseSound: {fileID: 8300000, guid: 6a5aa52e930dd2f4dbd52a3e18f9ee98, type: 3}
+  powerUpPickupSound: {fileID: 8300000, guid: ddedb26d864c06b418053c961fffe90d, type: 3}
+  UsePowerUpSound: {fileID: 8300000, guid: 9278adb3e2cf5da4da86cdc5d447f1ff, type: 3}
+  GameOverSound: {fileID: 8300000, guid: 6d76ef814e6753d44b2e780b7b14e367, type: 3}
 --- !u!212 &5195638029589738331
 SpriteRenderer:
   serializedVersion: 2

@@ -29,6 +29,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fov;
     [SerializeField] private float distanceOfView;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip keyPickupSound; // Audio for key collection
+    [SerializeField] private AudioClip keyUseSound; // Audio for key Use
+    [SerializeField] private AudioClip powerUpPickupSound; // Audio for power-up pickup
+    [SerializeField] private AudioClip UsePowerUpSound; // Audio for power-up Use
+    [SerializeField] private AudioClip GameOverSound; // Audio for Game Over
+    private AudioSource audioSource; // Reference to the AudioSource component
 
     private void Start()
     {
@@ -39,6 +46,8 @@ public class PlayerController : MonoBehaviour
         uiMask = FindAnyObjectByType<UI_MaskEquipped>();
         uiKey = FindAnyObjectByType<UI_Key>();
 
+        // Get the AudioSource component
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -112,6 +121,8 @@ public class PlayerController : MonoBehaviour
             spawnController.DropMaskAt(transform.position, currentPowerUpType.Value);
         }
 
+        // Play power-up pickup sound
+        PlaySound(powerUpPickupSound);
         currentPowerUpType = newType;
         Debug.Log(newType);
     }
@@ -124,6 +135,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player already has a key. Cannot collect another.");
             return; // Prevent collecting another key
         }
+        PlaySound(keyPickupSound);
         uiKey.KeyGained();
         hasKey = true; 
        
@@ -142,6 +154,7 @@ public class PlayerController : MonoBehaviour
 
         isUsingPowerUp = true;
 
+        PlaySound(UsePowerUpSound);
         switch (currentPowerUpType.Value)
         {
             case PowerUpType.SpeedBoost:
@@ -220,8 +233,17 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         // Handle player death (e.g., end the game)
+        PlaySound(GameOverSound);
         Debug.Log("Player has died. Ending the game...");
         Time.timeScale = 0; // Pause the game
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     public static Vector3 GetMouseWorldPositionWithZ(Vector3 screenPosition, Camera worldCamera)
