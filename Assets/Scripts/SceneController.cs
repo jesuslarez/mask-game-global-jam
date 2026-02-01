@@ -19,9 +19,9 @@ public class SceneController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void GoToOptions()
+    public void GoToHowToPlay()
     {
-        SceneManager.LoadScene("OptionsScene");
+        SceneManager.LoadScene("HowToPlayScene");
     }
 
     public void GoToCredits()
@@ -37,6 +37,7 @@ public class SceneController : MonoBehaviour
 
     public void GoToMenu()
     {
+        GeneralAudioManager.Instance.StopClip();
         SceneManager.LoadScene("MenuScene");
     }
 }

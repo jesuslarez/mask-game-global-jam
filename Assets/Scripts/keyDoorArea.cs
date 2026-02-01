@@ -47,7 +47,9 @@ public class keyDoorArea : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
-        SceneManager.LoadScene("WinScene");
+        GeneralAudioManager.Instance.PlayWinMusic();
+        SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
+        Time.timeScale = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

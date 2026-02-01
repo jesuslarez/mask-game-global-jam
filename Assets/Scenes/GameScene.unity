@@ -1379,33 +1379,17 @@ PrefabInstance:
       propertyPath: fieldOfView
       value: 
       objectReference: {fileID: 1816256714}
-    - target: {fileID: 4907111516714647276, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
-      propertyPath: keyUseSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6f6ad5572953f6549aa9b5f82a01b77e, type: 3}
-    - target: {fileID: 4907111516714647276, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
-      propertyPath: keyPickupSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 7fff5fcefb4e86641bea9b96159a7ceb, type: 3}
-    - target: {fileID: 4907111516714647276, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
-      propertyPath: UsePowerUpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 18ee59da47955144b83b86e9980b6ec0, type: 3}
-    - target: {fileID: 4907111516714647276, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
-      propertyPath: powerUpPickupSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 881ceaf304b75ee4881d6f01849b0d80, type: 3}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.55
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.19
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.08
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2169,10 +2153,6 @@ PrefabInstance:
       propertyPath: keyOnDoor
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2174422297946165753, guid: 86dec255cb24ed542a9947045b15c17a, type: 3}
-      propertyPath: doorOpening
-      value: 
-      objectReference: {fileID: 8300000, guid: 7c9383bfa4541d54293af519a17fb685, type: 3}
     - target: {fileID: 4590056686454836787, guid: 86dec255cb24ed542a9947045b15c17a, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.288386
