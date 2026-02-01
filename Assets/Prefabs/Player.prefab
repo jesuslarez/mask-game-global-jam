@@ -143,11 +143,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   fieldOfView: {fileID: 0}
   moveSpeed: 3.5
-  spriteUp: {fileID: 7482667652216324306, guid: 5fc343495f6989f40a04e8afb91c236a, type: 3}
+  spriteUp: {fileID: 1356648912636168812, guid: 5cddd6281aa869f41b42ceb508b2f658, type: 3}
   spriteDown: {fileID: 1870916034, guid: 1cc630547890d0e4691320dbfc5eef03, type: 3}
   spriteSide: {fileID: 1916304783, guid: 1cc630547890d0e4691320dbfc5eef03, type: 3}
   hasKey: 0
-  fov: 75
+  fov: 65
   distanceOfView: 8
   keyPickupSound: {fileID: 8300000, guid: 95edfc2b113eccb4b8c1ec94a8fe44c3, type: 3}
   keyUseSound: {fileID: 8300000, guid: 6a5aa52e930dd2f4dbd52a3e18f9ee98, type: 3}
