@@ -42,6 +42,7 @@ public class EnemyAI : MonoBehaviour
     private void LookForPlayer()
     {
         Vector3 distanceToPlayer = (player.transform.position - transform.position).normalized;
+        distanceToPlayer.z = 0;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, distanceToPlayer, lookingDistance);
 
