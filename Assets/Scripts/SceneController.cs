@@ -19,9 +19,9 @@ public class SceneController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void GoToOptions()
+    public void GoToHowToPlay()
     {
-        SceneManager.LoadScene("OptionsScene");
+        SceneManager.LoadScene("HowToPlayScene");
     }
 
     public void GoToCredits()
