@@ -1381,15 +1381,15 @@ PrefabInstance:
       objectReference: {fileID: 1816256714}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 5876712391693942404, guid: e9b8ee8e75c50394590e5da757238ed6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1432,14 +1432,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2399304653049306838, guid: 031130a3a75eb664bb39de666829eeca, type: 3}
+      propertyPath: Priority
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399304653049306838, guid: 031130a3a75eb664bb39de666829eeca, type: 3}
+      propertyPath: m_Volume
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399304653049306838, guid: 031130a3a75eb664bb39de666829eeca, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e31656884ad3df46931239b68559f2d, type: 3}
     - target: {fileID: 2914297360246361886, guid: 031130a3a75eb664bb39de666829eeca, type: 3}
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5561585475165444682, guid: 031130a3a75eb664bb39de666829eeca, type: 3}
-      propertyPath: winMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 93ed0abacb3f86e4db42062bb9e16762, type: 3}
     - target: {fileID: 8816695359784387071, guid: 031130a3a75eb664bb39de666829eeca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.90181
@@ -1529,11 +1537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637cd0aeb88d18142ad26c1ddf2ab1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolPoint
---- !u!1 &808602368 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3745763495758522034, guid: 2285333d41240f14f99c62837b568f6e, type: 3}
-  m_PrefabInstance: {fileID: 1891513405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &855374597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2148,7 +2151,7 @@ PrefabInstance:
       objectReference: {fileID: 2130430721}
     - target: {fileID: 2174422297946165753, guid: 86dec255cb24ed542a9947045b15c17a, type: 3}
       propertyPath: keyOnDoor
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4590056686454836787, guid: 86dec255cb24ed542a9947045b15c17a, type: 3}
       propertyPath: m_LocalScale.x
@@ -2384,29 +2387,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3745763495758522034, guid: 2285333d41240f14f99c62837b568f6e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1891513409}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2285333d41240f14f99c62837b568f6e, type: 3}
 --- !u!4 &1891513406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7832121027031912348, guid: 2285333d41240f14f99c62837b568f6e, type: 3}
   m_PrefabInstance: {fileID: 1891513405}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1891513409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808602368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd29cfde75252641a792dd310f9b15c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GeneralAudioManager
-  winMusic: {fileID: 0}
 --- !u!1 &1948183697
 GameObject:
   m_ObjectHideFlags: 0
