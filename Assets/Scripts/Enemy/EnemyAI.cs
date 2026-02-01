@@ -83,10 +83,10 @@ public class EnemyAI : MonoBehaviour
         }
 
         StartPatrol();
-        StopAllCoroutines();
+        //StopCoroutine();
     }
 
-    private void StartPatrol()
+    public void StartPatrol()
     {
         currentMode = Mode.Patrol;
         GoToNextPoint();
@@ -134,20 +134,24 @@ public class EnemyAI : MonoBehaviour
         float originalSpeed = agent.speed;
 
         // Set the speed to 0 to simulate the stun effect
-        agent.speed = 0;
-
+        agent.speed = 0.1f;
+        
         // Start a coroutine to restore the speed after the stun duration
         StartCoroutine(UnstunAfterDelay(duration, originalSpeed));
     }
 
     private IEnumerator UnstunAfterDelay(float duration, float originalSpeed)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
 
         isStunned = false;
         Debug.Log($"{gameObject.name} is no longer stunned!");
 
         // Restore the original speed of the NavMeshAgent
-        agent.speed = originalSpeed;
+        agent.speed = 2.5f;
+        agent.isStopped = false;
+        StartPatrol();
+        Debug.Log($"unstun: speed={agent.speed} stopped={agent.isStopped} enabled={agent.enabled} hasPath={agent.hasPath}");
+
     }
 }
