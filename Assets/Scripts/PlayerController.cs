@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     private System.Collections.IEnumerator SpeedBoost()
     {
         float originalSpeed = moveSpeed;
-        moveSpeed *= 3; // SUPER speed (times 3)
+        moveSpeed *= 1.5f; // SUPER speed (times 3)
         yield return new WaitForSeconds(5f); // Duration of the speed boost
         moveSpeed = originalSpeed; // Reset to original speed
         isUsingPowerUp = false;
