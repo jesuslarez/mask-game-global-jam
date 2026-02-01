@@ -19,6 +19,12 @@ public class SceneController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void RetryGame()
+    {
+        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1;
+    }
+
     public void GoToHowToPlay()
     {
         SceneManager.LoadScene("HowToPlayScene");
