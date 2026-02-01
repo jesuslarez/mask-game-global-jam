@@ -47,8 +47,7 @@ public class keyDoorArea : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
-        GeneralAudioManager.Instance.PlayWinMusic();
-        SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("WinScene");
         Time.timeScale = 0;
     }
 
