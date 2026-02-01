@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,9 @@ public class UI_Key : MonoBehaviour
 {
     [SerializeField] private Image keyImage;
     [SerializeField] private CanvasGroup keyGroup;
+    public TMP_Text keyNumberTMP;
+
+    public keyDoorArea keyDoorArea;
 
     [Header("Gain")]
     [SerializeField] private float gainFadeTime = 0.12f;
@@ -42,8 +46,17 @@ public class UI_Key : MonoBehaviour
 
     public void KeyUsed()
     {
+        keyNumberTMP.text = "Keys: " + keyDoorArea.keyOnDoor + "/3";
         if (running != null) StopCoroutine(running);
         running = StartCoroutine(UsedRoutine());
+    }
+
+    public void Opening() {
+        keyNumberTMP.text = "Opening gate…";
+
+    }
+    public void isOpened() {
+        keyNumberTMP.text = "ESCAPE";
     }
 
     private IEnumerator GainRoutine()
