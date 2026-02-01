@@ -16,4 +16,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 57737951da00c454d963d38e62d85cef, type: 3}
   powerName: Speed Boost
   duration: 5
-  speedMultiplier: 3
+  speedMultiplier: 1.75

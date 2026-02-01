@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7841965849869207709}
   - component: {fileID: -7581009333624172631}
   - component: {fileID: 1716087374026458498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: keyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.82641506, g: 0.02549743, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a210652d7e0bea74888aca2b96fa292d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cf5fdb093772549b4dd30cee90ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawn
+  powerUp: {fileID: 0}
 --- !u!61 &-7581009333624172631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5

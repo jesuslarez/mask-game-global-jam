@@ -142,10 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   fieldOfView: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 3.5
   spriteUp: {fileID: 7482667652216324306, guid: 5fc343495f6989f40a04e8afb91c236a, type: 3}
-  spriteDown: {fileID: 7933510204706534403, guid: 7b89f93e504851e449fb901126c985bc, type: 3}
-  spriteSide: {fileID: -6160522085252066548, guid: cee9cee8cc2cf954cb24b7048ee5ae7f, type: 3}
+  spriteDown: {fileID: 1870916034, guid: 1cc630547890d0e4691320dbfc5eef03, type: 3}
+  spriteSide: {fileID: 1916304783, guid: 1cc630547890d0e4691320dbfc5eef03, type: 3}
   hasKey: 0
   fov: 75
   distanceOfView: 8
@@ -243,7 +243,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &7575794002620070101
 Rigidbody2D:
   serializedVersion: 5
@@ -300,7 +300,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.009599218, y: 0.0071553155, z: -1}
-  m_LocalScale: {x: 2.67, y: 2.67, z: 2.67}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5876712391693942404}
