@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6805437720105301581}
   - component: {fileID: 15839035686232095}
   - component: {fileID: 1127100313243211172}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   agent: {fileID: 0}
-  patrolPointsParent: {fileID: 3658323222269058462, guid: fc5d255d6fb7b77468b6a13aaecf1086, type: 3}
   lookingDistance: 5
   lookingTimeout: 1.5
   currentLookingTimeout: 0

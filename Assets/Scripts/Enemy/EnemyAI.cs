@@ -7,10 +7,10 @@ public class EnemyAI : MonoBehaviour
     public enum Mode { Chase, Patrol }
 
     public NavMeshAgent agent;
-    public Transform patrolPointsParent;
     public float lookingDistance;
     public float lookingTimeout;
     public float currentLookingTimeout;
+    private Transform patrolPointsParent;
     private PatrolPoint[] patrolPoints;
     private Mode currentMode = Mode.Patrol;
 
@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        patrolPointsParent = GameObject.FindGameObjectWithTag("PatrolPoint").transform;
         patrolPoints = patrolPointsParent.GetComponentsInChildren<PatrolPoint>();
         currentPoint = Random.Range(0, patrolPoints.Length - 1);
         StartPatrol();
