@@ -47,6 +47,9 @@ public class UI_MaskEquipped : MonoBehaviour
         if (player.currentPowerUpType == null)
         {
             maskUiSprite.sprite = null;
+            Color c0 = maskUiSprite.color;
+            c0.a = 0f;
+            maskUiSprite.color = c0;
             maskUiSprite.enabled = false;
             maskText.text = "Use mask";
             maskCanvasGroup.alpha = 0.25f;
@@ -63,6 +66,9 @@ public class UI_MaskEquipped : MonoBehaviour
             return;
         }
 
+        Color c = maskUiSprite.color;
+        c.a = 1f;
+        maskUiSprite.color = c;
         var def = database.Get(player.currentPowerUpType.Value);
         maskUiSprite.sprite = def != null ? def.sprite : null;
         maskUiSprite.enabled = (maskUiSprite.sprite != null);
