@@ -33,5 +33,6 @@ public class PowerUp : MonoBehaviour
 public enum PowerUpType
 {
     SpeedBoost,      // Increases player speed
-    Invulnerability  // Grants temporary invulnerability
+    Invulnerability,  // Grants temporary invulnerability
+    Stun    // Freezes enemies in a surrounding area
 }
