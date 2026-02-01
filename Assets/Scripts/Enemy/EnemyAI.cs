@@ -130,21 +130,24 @@ public class EnemyAI : MonoBehaviour
         isStunned = true;
         Debug.Log($"{gameObject.name} is stunned!");
 
-        // Stop the NavMeshAgent from moving
-        agent.isStopped = true;
+        // Store the original speed of the NavMeshAgent
+        float originalSpeed = agent.speed;
 
-        // Start a coroutine to unstun the enemy after the duration
-        StartCoroutine(UnstunAfterDelay(duration));
+        // Set the speed to 0 to simulate the stun effect
+        agent.speed = 0;
+
+        // Start a coroutine to restore the speed after the stun duration
+        StartCoroutine(UnstunAfterDelay(duration, originalSpeed));
     }
 
-    private IEnumerator UnstunAfterDelay(float duration)
+    private IEnumerator UnstunAfterDelay(float duration, float originalSpeed)
     {
         yield return new WaitForSeconds(duration);
 
         isStunned = false;
         Debug.Log($"{gameObject.name} is no longer stunned!");
 
-        // Resume the NavMeshAgent's movement
-        agent.isStopped = false;
+        // Restore the original speed of the NavMeshAgent
+        agent.speed = originalSpeed;
     }
 }
