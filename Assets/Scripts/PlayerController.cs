@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -236,6 +237,7 @@ public class PlayerController : MonoBehaviour
         PlaySound(GameOverSound);
         Debug.Log("Player has died. Ending the game...");
         Time.timeScale = 0; // Pause the game
+        SceneManager.LoadScene("GameOverScene");
     }
 
     private void PlaySound(AudioClip clip)
